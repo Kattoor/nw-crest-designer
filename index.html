@@ -482,6 +482,8 @@
         const image = document.createElement('img');
         const url = `/images/foreground/small/${name}_small.png`;
         image.src = url;
+        image.width = 72;
+        image.height = 72;
         image.draggable = false;
         image.classList.add('foreground');
         image.classList.add('selectable');
@@ -498,6 +500,8 @@
         const image = document.createElement('img');
         const url = `/images/background/small/${name}_small.png`;
         image.src = url;
+        image.width = 72;
+        image.height = 72;
         image.draggable = false;
         image.classList.add('background');
         image.classList.add('selectable');
