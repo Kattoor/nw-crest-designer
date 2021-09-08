@@ -822,15 +822,15 @@
         const color = parseInt(currentBackgroundColor.slice(1), 16);
 
         const image = new Image();
-        image.onload = ({path: [img]}) => {
-            canvasBackground.width = img.width;
-            canvasBackground.height = img.height;
+        image.onload = () => {
+            canvasBackground.width = image.width;
+            canvasBackground.height = image.height;
 
             ctxBackground.drawImage(image, 0, 0);
 
-            const imageData = ctxBackground.getImageData(0, 0, img.width, img.height);
+            const imageData = ctxBackground.getImageData(0, 0, image.width, image.height);
             const imagePixels = imageData.data;
-            for (let i = 0; i < img.height * img.width * 4; i += 4) {
+            for (let i = 0; i < image.height * image.width * 4; i += 4) {
                 const r = imagePixels[i];
                 const g = imagePixels[i + 1];
                 const b = imagePixels[i + 2];
@@ -857,15 +857,15 @@
         const image = new Image();
         image.crossOrigin = 'Anonymous';
 
-        image.onload = ({path: [img]}) => {
-            canvasForeground.width = img.width;
-            canvasForeground.height = img.height;
+        image.onload = () => {
+            canvasForeground.width = image.width;
+            canvasForeground.height = image.height;
 
             ctxForeground.drawImage(image, 0, 0);
 
-            const imageData = ctxForeground.getImageData(0, 0, img.width, img.height);
+            const imageData = ctxForeground.getImageData(0, 0, image.width, image.height);
             const imagePixels = imageData.data;
-            for (let i = 0; i < img.height * img.width * 4; i += 4) {
+            for (let i = 0; i < image.height * image.width * 4; i += 4) {
                 const r = imagePixels[i];
                 const g = imagePixels[i + 1];
                 const b = imagePixels[i + 2];
