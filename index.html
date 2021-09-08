@@ -132,6 +132,8 @@
             box-sizing: border-box;
             border-radius: 25px;
             margin: 5px;
+            width: 50px;
+            height: 50px;
         }
 
         div.color-tile:hover {
@@ -153,6 +155,65 @@
             padding: 30px;
             color: #2c3e50;
             background-color: white;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #container {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            #left-column {
+                height: 60%;
+                flex: 1;
+            }
+
+            #right-column {
+                height: 40%;
+                flex: 1;
+            }
+
+            #foreground-configuration, #background-configuration {
+                flex-direction: column;
+                box-sizing: border-box;
+                margin-bottom: 0;
+                padding-bottom: 15px;
+            }
+
+            #foreground-configuration {
+                height: 60%;
+            }
+
+            #background-configuration {
+                height: 40%;
+            }
+
+            #foreground-images-container, #background-images-container {
+                width: 100%;
+                height: 80%;
+            }
+
+            #foreground-colors-container, #background-colors-container {
+                width: 100%;
+                height: 20%;
+            }
+
+            div.foreground.color-tile, div.background.color-tile {
+                width: 25px;
+                height: 25px;
+            }
+
+            #canvas-container canvas {
+                width: 60%;
+            }
+
+            #canvas-container {
+                flex: 1;
+            }
+
+            .fa-4x {
+                font-size: 2em !important;
+            }
         }
     </style>
 </head>
@@ -772,8 +833,6 @@
         const colorTile = document.createElement('div');
         colorTile.classList.add('foreground');
         colorTile.classList.add('color-tile');
-        colorTile.style.width = '50px';
-        colorTile.style.height = '50px';
         colorTile.style.backgroundColor = color;
         colorTile.draggable = false;
         colorTile.onclick = () => {
@@ -788,8 +847,6 @@
         const colorTile = document.createElement('div');
         colorTile.classList.add('background');
         colorTile.classList.add('color-tile');
-        colorTile.style.width = '50px';
-        colorTile.style.height = '50px';
         colorTile.style.backgroundColor = color;
         colorTile.draggable = false;
         colorTile.onclick = () => {
