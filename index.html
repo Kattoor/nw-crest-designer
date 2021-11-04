@@ -102,8 +102,10 @@
             justify-content: center;
         }
 
-        div.buttons i {
+        div.buttons button {
             margin: 15px;
+            border: 0;
+            background: none;
         }
 
         #canvas-background, #canvas-foreground {
@@ -238,9 +240,9 @@
         </div>
 
         <div class="buttons">
-            <i class="fas fa-random fa-4x" id="random-button"></i>
-            <i class="fas fa-cloud-download-alt fa-4x" id="download-button"></i>
-            <i class="fas fa-link fa-4x" id="url-button"></i>
+            <button type="button" class="fas fa-random fa-4x" id="random-button"></button>
+            <button type="button" class="fas fa-cloud-download-alt fa-4x" id="download-button"></button>
+            <button type="button" class="fas fa-link fa-4x" id="url-button"></button>
         </div>
     </div>
 </div>
@@ -280,551 +282,308 @@
         'Covenant variant 2': '#b47c12',
         'Covenant variant 3': '#895f0d'
     };
-    const smallForegroundImagePaths = [
-        'dcW85Zf/icon-crest-208-small',
-        'kHfPh18/icon-crest-207-small',
-        'FsZkLnQ/icon-crest-206-small',
-        '7vk8wbg/icon-crest-205-small',
-        'BKJxxZx/icon-crest-204-small',
-        'JFMbbLn/icon-crest-203-small',
-        'q7c7dzN/icon-crest-202-small',
-        'TWvc07m/icon-crest-200-small',
-        '1d2wS0n/icon-crest-201-small',
-        'ByW5YRb/icon-crest-199-small',
-        'Qk059v4/icon-crest-197-small',
-        'Wv9j5TW/icon-crest-198-small',
-        'DbGyk6p/icon-crest-196-small',
-        'wpGVDmW/icon-crest-195-small',
-        'gJ5Ydsp/icon-crest-194-small',
-        '4KMSh5Y/icon-crest-193-small',
-        'N380BSG/icon-crest-192-small',
-        'RDP6Chh/icon-crest-191-small',
-        'GQJPtr8/icon-crest-189-small',
-        'ysddh2r/icon-crest-190-small',
-        'XsPxC8R/icon-crest-188-small',
-        'xLjkcWV/icon-crest-187-small',
-        '0VHtTXv/icon-crest-186-small',
-        'WkHTd9p/icon-crest-185-small',
-        'VxkWMyh/icon-crest-184-small',
-        'VxTJkjL/icon-crest-183-small',
-        'hdHdRvG/icon-crest-182-small',
-        'Qb6W7BH/icon-crest-181-small',
-        '3NQgm9B/icon-crest-180-small',
-        'WfykR18/icon-crest-179-small',
-        '5xsvc7v/icon-crest-178-small',
-        'fxsVyGs/icon-crest-177-small',
-        'QYwg3rt/icon-crest-176-small',
-        '513pnqq/icon-crest-175-small',
-        'VVWVxqH/icon-crest-174-small',
-        'rMjtXPy/icon-crest-173-small',
-        'Cb1gHW7/icon-crest-172-small',
-        '0tZBkfz/icon-crest-171-small',
-        'Tkr4k4H/icon-crest-170-small',
-        'j8Xy9VW/icon-crest-169-small',
-        'BzLHMrB/icon-crest-168-small',
-        'jHNLLgX/icon-crest-167-small',
-        '7zTm9jJ/icon-crest-166-small',
-        'RDygSsM/icon-crest-165-small',
-        '4NdykMN/icon-crest-164-small',
-        'jWwsCdC/icon-crest-163-small',
-        'SKHFLzK/icon-crest-162-small',
-        '0jVrLfB/icon-crest-161-small',
-        'JsLd6Dh/icon-crest-160-small',
-        'ZS00S7g/icon-crest-159-small',
-        'sCRNw8p/icon-crest-158-small',
-        'HhHzZYk/icon-crest-157-small',
-        'LJ1hHhR/icon-crest-156-small',
-        'WHx8F2h/icon-crest-155-small',
-        'RYt2RRg/icon-crest-154-small',
-        'Bj0hTkz/icon-crest-153-small',
-        'm6pdkw1/icon-crest-152-small',
-        '4Vfp59x/icon-crest-151-small',
-        '9ZcDS5G/icon-crest-150-small',
-        'mDYv8Wd/icon-crest-149-small',
-        'ZHYkFbB/icon-crest-148-small',
-        'rZzDB3y/icon-crest-147-small',
-        'sKjZhFc/icon-crest-146-small',
-        'FHJxkpk/icon-crest-145-small',
-        'RTCRGhC/icon-crest-144-small',
-        'SsGbXts/icon-crest-143-small',
-        '1XGKXLz/icon-crest-142-small',
-        'C8zb1mw/icon-crest-141-small',
-        'Jt3QdtL/icon-crest-140-small',
-        'rmrb4f7/icon-crest-139-small',
-        'r3YpfMG/icon-crest-138-small',
-        'fdhMF9H/icon-crest-137-small',
-        'z2M7bhp/icon-crest-136-small',
-        'ZzWK0C5/icon-crest-135-small',
-        'FxJ5c7P/icon-crest-134-small',
-        '5T57tdr/icon-crest-133-small',
-        'T8Tg99Y/icon-crest-132-small',
-        'n7shY8W/icon-crest-131-small',
-        'TMXbXt4/icon-crest-130-small',
-        '3mNqvgL/icon-crest-129-small',
-        'wK5S1Yb/icon-crest-128-small',
-        'CQkrk73/icon-crest-127-small',
-        'nmzQV3r/icon-crest-126-small',
-        'fG1hCnG/icon-crest-125-small',
-        'cvNS162/icon-crest-124-small',
-        'BGV07WF/icon-crest-123-small',
-        'mXhGGhd/icon-crest-122-small',
-        'CnfF9zJ/icon-crest-121-small',
-        '7gZmTgg/icon-crest-120-small',
-        '528q4ST/icon-crest-119-small',
-        'm8Y6zxG/icon-crest-118-small',
-        'TWVqT7N/icon-crest-117-small',
-        'FHVD3XD/icon-crest-116-small',
-        'cwK8gSD/icon-crest-115-small',
-        'VVFFgjD/icon-crest-114-small',
-        'Nx33s8v/icon-crest-113-small',
-        't3fxq45/icon-crest-112-small',
-        'WpQDwp4/icon-crest-111-small',
-        '4Jf83BB/icon-crest-110-small',
-        'bbwNJZv/icon-crest-109-small',
-        'CVGqV4k/icon-crest-108-small',
-        '2Kv1dVn/icon-crest-107-small',
-        'vx7p200/icon-crest-106-small',
-        'vDNScdL/icon-crest-105-small',
-        'F57zdVM/icon-crest-104-twitch-small',
-        'BwBRn4r/icon-crest-103-twitch-small',
-        'vDC9kYv/icon-crest-102-twitch-small',
-        'yY2gPXV/icon-crest-101-premium-small',
-        'fDdvH6X/icon-crest-100-premium-small',
-        'KWQHR29/icon-crest-099-premium-small',
-        'Byy2Z5L/icon-crest-098-twitch-small',
-        '18D1JPX/icon-crest-097-twitch-small',
-        'bzJ0WFj/icon-crest-096-twitch-small',
-        'JBYNkkG/icon-crest-095-small',
-        'fNCKjsJ/icon-crest-094-small',
-        'CM5Nvvf/icon-crest-093-small',
-        '9TNHR9G/icon-crest-092-small',
-        'Pc1YnzP/icon-crest-091-small',
-        '3B2p2C3/icon-crest-090-small',
-        'BCKMSL5/icon-crest-089-small',
-        'nnVHJ02/icon-crest-088-small',
-        'XZ5bmZ7/icon-crest-087-small',
-        'mb1sRyH/icon-crest-086-small',
-        'y5HrzXy/icon-crest-085-small',
-        'sVTrhx3/icon-crest-084-small',
-        'h80KM7K/icon-crest-083-small',
-        's1xHfW6/icon-crest-082-small',
-        'LkX9QFN/icon-crest-081-small',
-        'mSfw717/icon-crest-080-small',
-        'tcdJcdR/icon-crest-079-small',
-        '0Kg1038/icon-crest-078-small',
-        'Pw3MLpZ/icon-crest-077-small',
-        'r4GYx5s/icon-crest-076-small',
-        'HD8pjhv/icon-crest-075-small',
-        '31RFGp7/icon-crest-074-small',
-        '5rmKQ65/icon-crest-073-small',
-        'PtDWMSM/icon-crest-072-small',
-        '2NtmFLp/icon-crest-071-small',
-        'KxdnnJX/icon-crest-070-small',
-        'f4Vkjcy/icon-crest-069-small',
-        'VCTRLpj/icon-crest-068-small',
-        '7vGBvSz/icon-crest-067-small',
-        'tZMjyML/icon-crest-066-small',
-        '80F2Yyk/icon-crest-065-small',
-        'mG0sGH4/icon-crest-064-small',
-        'XYbXTSt/icon-crest-063-small',
-        'GQ36L1T/icon-crest-062-small',
-        'pRf647H/icon-crest-061-small',
-        'GvPJF3h/icon-crest-060-small',
-        'wN0xdQR/icon-crest-059-small',
-        'zrqhqQf/icon-crest-058-small',
-        'XCcm7Bw/icon-crest-057-small',
-        'NrNLvhg/icon-crest-056-small',
-        'sCvx9K0/icon-crest-055-small',
-        'kDvcyxb/icon-crest-054-small',
-        'dWrBpdJ/icon-crest-053-small',
-        'LYGPxLq/icon-crest-052-small',
-        'YT3skFp/icon-crest-051-small',
-        'y4tzHsr/icon-crest-50-small',
-        'r5j7Spv/icon-crest-49-small',
-        'BnqZLHw/icon-crest-48-small',
-        'xhnNwyW/icon-crest-47-small',
-        'bWrGhjY/icon-crest-46-small',
-        'gvmbgxS/icon-crest-45-small',
-        'HBGcwzF/icon-crest-44-small',
-        'y6Nkp0r/icon-crest-43-small',
-        '9NNzcxG/icon-crest-42-small',
-        'XDddXSW/icon-crest-41-small',
-        'QvM1hjk/icon-crest-40-small',
-        'MG6rZGb/icon-crest-39-small',
-        'gMtdZsR/icon-crest-38-small',
-        'jDqGhB0/icon-crest-37-small',
-        'VDrdTBH/icon-crest-36-small',
-        'RStHWvC/icon-crest-35-small',
-        'hmYCKBQ/icon-crest-34-small',
-        'DKryPN6/icon-crest-33-small',
-        'ZHTH5Qc/icon-crest-32-small',
-        'dfsswPg/icon-crest-31-small',
-        'W5f5B57/icon-crest-30-small',
-        '7zf7n1K/icon-crest-29-small',
-        'syhd5ht/icon-crest-28-small',
-        'p482mjN/icon-crest-27-small',
-        'zfPNxKr/icon-crest-26-small',
-        'yshRKBh/icon-crest-25-small',
-        'JzL9vDf/icon-crest-24-small',
-        'DGrJwWx/icon-crest-23-small',
-        'T4CyWYR/icon-crest-22-small',
-        'PzKZdqC/icon-crest-21-small',
-        'HXHp4kP/icon-crest-20-small',
-        'thNFRrW/icon-crest-19-small',
-        'mh05ZKY/icon-crest-18-small',
-        'd0XzRxD/icon-crest-17-small',
-        'YhMsHWm/icon-crest-16-small',
-        'QM1j0xN/icon-crest-15-small',
-        'fk8vfvY/icon-crest-14-small',
-        '2PWPkBH/icon-crest-13-small',
-        'xsB50W5/icon-crest-12-small',
-        'vxFWhg3/icon-crest-11-small',
-        'zxqjWBB/icon-crest-10-small',
-        'vDzFK5t/icon-crest-9-small',
-        'tPMcHfw/icon-crest-8-small',
-        'hyR2yqQ/icon-crest-7-small',
-        'WvVVbbp/icon-crest-6-small',
-        '9nM8qyD/icon-crest-5-small',
-        'Z6wtpBc/icon-crest-4-small',
-        'hXsymyf/icon-crest-3-small',
-        'NLyMNF4/icon-crest-1-small',
-        'wrb22v0/icon-crest-2-small',
-    ].sort((first, second) => parseInt(first.match(/icon-crest-(\d+)-/)[1]) - parseInt(second.match(/icon-crest-(\d+)-/)[1]));
-    const largeForegroundImagePaths = [
-        'zrnHBF3/icon-crest-183',
-        'Hq7hvFX/icon-crest-182',
-        'zxsgd64/icon-crest-184',
-        'ZXY4ZQb/icon-crest-185',
-        '6tydkS6/icon-crest-186',
-        'F7hkwHC/icon-crest-187',
-        '1XWnQdR/icon-crest-188',
-        'MCZ7mWW/icon-crest-189',
-        'GQmLRMt/icon-crest-190',
-        'HdcH4Ss/icon-crest-191',
-        'qL6fKzX/icon-crest-192',
-        'jb7YXsf/icon-crest-193',
-        'YNpnGLH/icon-crest-194',
-        'Dw4JQ6k/icon-crest-195',
-        'ggR9GKf/icon-crest-196',
-        'r5YmGkb/icon-crest-197',
-        'MstfH4s/icon-crest-198',
-        'X8s2Yk6/icon-crest-199',
-        '6B97c6h/icon-crest-200',
-        'Vm6sGhL/icon-crest-201',
-        'Bf44qQG/icon-crest-202',
-        'Vwj4Dg1/icon-crest-203',
-        'zfMbvhh/icon-crest-204',
-        'PYSJnvF/icon-crest-205',
-        'rxCFxTj/icon-crest-206',
-        'bXfwWJm/icon-crest-207',
-        'sRZ480m/icon-crest-208',
-        'z7Ytn3g/icon-crest-1',
-        'Qck1mDv/icon-crest-2',
-        'xGCxhz4/icon-crest-3',
-        'Y8jq9R2/icon-crest-4',
-        '9NDShyp/icon-crest-5',
-        'xXPdmVD/icon-crest-6',
-        'mRDJKyJ/icon-crest-7',
-        'XJXyxSB/icon-crest-8',
-        'f0p3gWX/icon-crest-9',
-        'HhKmH3j/icon-crest-10',
-        'mzsT1qj/icon-crest-11',
-        'xXqBz60/icon-crest-12',
-        '1bjbsfN/icon-crest-13',
-        'WyQcYH5/icon-crest-14',
-        'WPWxcNm/icon-crest-15',
-        'CV1RGHm/icon-crest-16',
-        '4Y0QJMj/icon-crest-17',
-        'ypP9WPK/icon-crest-18',
-        'CHg8DfB/icon-crest-19',
-        '7nXG2Qr/icon-crest-20',
-        '319mpGx/icon-crest-21',
-        'WxyGpDS/icon-crest-22',
-        '2q4sTr4/icon-crest-23',
-        'nLRCgXG/icon-crest-24',
-        'wLQFGSL/icon-crest-25',
-        'ftH9qFG/icon-crest-26',
-        'FVRwvxg/icon-crest-27',
-        'mFLRyKP/icon-crest-28',
-        'bBdGPVg/icon-crest-29',
-        'Zdxxcz4/icon-crest-30',
-        'tZdgSPb/icon-crest-31',
-        'nBYLP1y/icon-crest-32',
-        'Wsv4dYj/icon-crest-33',
-        'gSdcbpL/icon-crest-34',
-        'GVcGWBS/icon-crest-35',
-        'jhwp7dh/icon-crest-36',
-        'z7GCLVs/icon-crest-37',
-        'z2q7whL/icon-crest-38',
-        'Wt44DfW/icon-crest-39',
-        'ZmfZRzJ/icon-crest-40',
-        '1MN8b07/icon-crest-41',
-        '3cmDLWD/icon-crest-42',
-        'mtpmmyM/icon-crest-43',
-        'dDCTWmH/icon-crest-44',
-        'yYhNs6y/icon-crest-45',
-        'h2hr37C/icon-crest-46',
-        '7XYYywq/icon-crest-47',
-        '2v1zy9s/icon-crest-48',
-        'YbySxbq/icon-crest-49',
-        '30JJPGG/icon-crest-50',
-        'wNvms5P/icon-crest-051',
-        'mX34PqH/icon-crest-052',
-        '9t40W0H/icon-crest-053',
-        'd6Q5pXX/icon-crest-054',
-        'X8nFZs1/icon-crest-055',
-        'p1JCbSN/icon-crest-056',
-        'f0zwCP0/icon-crest-057',
-        '9YrBrWR/icon-crest-058',
-        'VxnFz0p/icon-crest-060',
-        'RNnfLqB/icon-crest-059',
-        'bXPDdNy/icon-crest-061',
-        'XWFkJ73/icon-crest-062',
-        'TP5qX1H/icon-crest-063',
-        'JsHzFrp/icon-crest-064',
-        'S54fsKq/icon-crest-065',
-        '7GZRsFL/icon-crest-066',
-        'yVHMhMx/icon-crest-067',
-        'pb7Bhzf/icon-crest-068',
-        'kmvGXKB/icon-crest-069',
-        'Js0VHTF/icon-crest-070',
-        'R9JFXhR/icon-crest-071',
-        'bP0Tk4z/icon-crest-072',
-        'D7jBR6D/icon-crest-073',
-        'ngjDvwx/icon-crest-074',
-        'MGCwR3p/icon-crest-075',
-        '7S97b16/icon-crest-076',
-        'tYdM5NJ/icon-crest-077',
-        'DKXmGyN/icon-crest-078',
-        'vmR3WBP/icon-crest-079',
-        'NL63knS/icon-crest-080',
-        'qFGwnRg/icon-crest-081',
-        'XXjJ2Y6/icon-crest-082',
-        'mTwV6zn/icon-crest-083',
-        'WnwvrZH/icon-crest-084',
-        'W2gpy1f/icon-crest-085',
-        '5kcWCD4/icon-crest-086',
-        '5F7hBgv/icon-crest-087',
-        'n6cnBgD/icon-crest-088',
-        'yh4H4yf/icon-crest-089',
-        'sFScTnm/icon-crest-090',
-        '3RmkwGf/icon-crest-091',
-        'W00QVXR/icon-crest-092',
-        'NnZB1Pw/icon-crest-093',
-        'KwT7h4Z/icon-crest-094',
-        'LR1JNtQ/icon-crest-095',
-        'Gd5ybg9/icon-crest-096-twitch',
-        'YNK3tqw/icon-crest-097-twitch',
-        'GcHzNhC/icon-crest-098-twitch',
-        'N2HMPgQ/icon-crest-099-premium',
-        'jrdxX1n/icon-crest-100-premium',
-        'VgxdPqZ/icon-crest-101-premium',
-        '48MMjRs/icon-crest-102-twitch',
-        'sFrLGgZ/icon-crest-103-twitch',
-        'WBfPjTP/icon-crest-104-twitch',
-        'F7PFMRs/icon-crest-105',
-        'RPrzCT2/icon-crest-106',
-        'h9F1Pmg/icon-crest-107',
-        'zS6Mh3J/icon-crest-108',
-        'sF2xfxr/icon-crest-109',
-        'Gd3ffDB/icon-crest-110',
-        'ZLVFxWq/icon-crest-111',
-        'YBYSbMd/icon-crest-112',
-        'TmzkncC/icon-crest-113',
-        '9Gt9rdt/icon-crest-114',
-        'YQpc4p1/icon-crest-115',
-        'QM2nXMV/icon-crest-116',
-        '8sqJVQQ/icon-crest-117',
-        'z20vy0K/icon-crest-118',
-        'R6wtV67/icon-crest-119',
-        '4dfwrSq/icon-crest-120',
-        'nLvP5Mp/icon-crest-121',
-        'YkW7Xxb/icon-crest-122',
-        'NCLWtpz/icon-crest-123',
-        'HrmdYjS/icon-crest-124',
-        'HGntxYF/icon-crest-125',
-        'mDfLp02/icon-crest-126',
-        '1mtTqQ9/icon-crest-127',
-        'g3fw1nv/icon-crest-128',
-        'G38rqmP/icon-crest-129',
-        'wzm8tTW/icon-crest-130',
-        '7N6kCrb/icon-crest-131',
-        'wKdQSt9/icon-crest-132',
-        'Zx0Vj43/icon-crest-133',
-        'bN7wfsY/icon-crest-134',
-        '8xTF0yq/icon-crest-135',
-        'M5yn8Jd/icon-crest-136',
-        'h1mNxWL/icon-crest-137',
-        'c36MYxy/icon-crest-138',
-        'd2FRYYD/icon-crest-139',
-        '8dmxRBk/icon-crest-140',
-        'ys2qqKh/icon-crest-141',
-        '3kvRjQt/icon-crest-142',
-        'gSVxVsr/icon-crest-143',
-        'qsRdWZR/icon-crest-144',
-        'k5LkKcx/icon-crest-145',
-        'MGyDMCk/icon-crest-146',
-        'p0kzQwD/icon-crest-147',
-        'PWKSFr0/icon-crest-148',
-        '1MLDF3g/icon-crest-149',
-        'qnPkb9j/icon-crest-150',
-        'XkBRPQY/icon-crest-151',
-        'RcmXTxp/icon-crest-152',
-        'gMQHb8q/icon-crest-153',
-        'qgRdZNq/icon-crest-154',
-        '9sFC9tH/icon-crest-155',
-        'TTGbMX1/icon-crest-156',
-        'yy4hzw7/icon-crest-157',
-        'Q6L7xCZ/icon-crest-158',
-        'ygdMq9y/icon-crest-159',
-        'C0VPfJx/icon-crest-160',
-        'fd515PS/icon-crest-161',
-        'SrFbXJF/icon-crest-162',
-        'g6cPLWD/icon-crest-163',
-        'tDkBvJN/icon-crest-164',
-        'qpSQfMS/icon-crest-165',
-        'P99FtGX/icon-crest-166',
-        'xDz13cq/icon-crest-167',
-        'VpMJ6dm/icon-crest-168',
-        'Y2Bh753/icon-crest-169',
-        'vqgt5Vb/icon-crest-170',
-        'Jpk1ZBL/icon-crest-171',
-        'wcsZnSc/icon-crest-172',
-        'G5pVZwq/icon-crest-173',
-        'd62MBR1/icon-crest-174',
-        'mSqgjp2/icon-crest-175',
-        'MZPTzY3/icon-crest-176',
-        '0VxT2Vw/icon-crest-177',
-        '9qJGKKh/icon-crest-178',
-        'fnQMJgv/icon-crest-179',
-        'w66zDK4/icon-crest-180',
-        '9tky2wv/icon-crest-181',
-    ].sort((first, second) => parseInt(first.match(/icon-crest-(\d+)/)[1]) - parseInt(second.match(/icon-crest-(\d+)/)[1]));
-    const smallBackgroundImagePaths = [
-        'VWfSfvv/icon-shield-shape2v5-small',
-        '1GZsyz3/icon-shield-shape2v6-small',
-        'tpsRCRp/icon-shield-shape3v1-small',
-        'fS8jXqd/icon-shield-shape3v2-small',
-        'XCMqMLD/icon-shield-shape3v3-small',
-        'M6KB3Zq/icon-shield-shape3v4-small',
-        'G0gh4kd/icon-shield-shape3v5-small',
-        'jyqK5Ww/icon-shield-shape3v6-small',
-        'TBYgkN1/icon-shield-shape4v1-small',
-        'Q96VgwL/icon-shield-shape4v2-small',
-        'qMbQNBQ/icon-shield-shape4v3-small',
-        '72xr8WK/icon-shield-shape4v4-small',
-        'wc0hh3f/icon-shield-shape4v5-small',
-        'z5XmC3x/icon-shield-shape4v6-small',
-        'nCd4pp6/icon-shield-shape1v1-small',
-        'Kb5pzNN/icon-shield-shape1v2-small',
-        'SyfvWWV/icon-shield-shape1v3-small',
-        'Wy88z35/icon-shield-shape1v4-small',
-        'z25Jr5B/icon-shield-shape1v5-small',
-        'tHSsSNZ/icon-shield-shape1v6-small',
-        'bzqmnDB/icon-shield-shape2v1-small',
-        '1zHZsFH/icon-shield-shape2v2-small',
-        'DgjPnRr/icon-shield-shape2v3-small',
-        'r6strQX/icon-shield-shape2v4-small',
-    ].sort((first, second) => first.match(/\/(.*)/)[1].localeCompare(second.match(/\/(.*)/)[1]));
-    const largeBackgroundImagePaths = [
-        '47RwPH7/icon-shield-shape1v2',
-        '3CmJW7w/icon-shield-shape1v3',
-        'cxt1gqp/icon-shield-shape1v4',
-        'dcxbnMK/icon-shield-shape1v5',
-        'xLYrZzm/icon-shield-shape1v6',
-        'w0Qyfwy/icon-shield-shape2v1',
-        'gvCFMHr/icon-shield-shape2v2',
-        '98DKN0j/icon-shield-shape2v3',
-        'zVfTtsj/icon-shield-shape2v4',
-        'GTHYZZq/icon-shield-shape2v5',
-        '2NycbxY/icon-shield-shape2v6',
-        'CmKrccY/icon-shield-shape3v1',
-        'tqdwbFG/icon-shield-shape3v2',
-        'p21hn1q/icon-shield-shape3v3',
-        '2FHZLMC/icon-shield-shape3v4',
-        'HNGjk3x/icon-shield-shape3v5',
-        'MGWjJn3/icon-shield-shape3v6',
-        'HxczGsy/icon-shield-shape4v1',
-        'MkqZ4pV/icon-shield-shape4v2',
-        'mBP6Ywq/icon-shield-shape4v3',
-        '93VRC9k/icon-shield-shape4v4',
-        'WfHJ1SJ/icon-shield-shape4v5',
-        'B3CSX0H/icon-shield-shape4v6',
-        'SN3HvTn/icon-shield-shape1v1',
-    ].sort((first, second) => first.match(/\/(.*)/)[1].localeCompare(second.match(/\/(.*)/)[1]));
 
-    function imagePathToUrl(imagePath) {
-        return `https://i.ibb.co/${imagePath}.png`;
-    }
-
-    function getCorrespondingLargeImagePath(largeImageArray, smallImagePath) {
-        const smallImageFileName = smallImagePath.slice(smallImagePath.lastIndexOf('/') + 1);
-        const largeImageFileName = smallImageFileName.replace('-small', '');
-        const largeImagePath = largeImageArray.find(imagePath => imagePath.endsWith(largeImageFileName));
-        return imagePathToUrl(largeImagePath);
-    }
+    const foregroundImagePaths = [
+        "icon_crest_051",
+        "icon_crest_052",
+        "icon_crest_053",
+        "icon_crest_054",
+        "icon_crest_055",
+        "icon_crest_056",
+        "icon_crest_057",
+        "icon_crest_058",
+        "icon_crest_059",
+        "icon_crest_060",
+        "icon_crest_061",
+        "icon_crest_062",
+        "icon_crest_063",
+        "icon_crest_064",
+        "icon_crest_065",
+        "icon_crest_066",
+        "icon_crest_067",
+        "icon_crest_068",
+        "icon_crest_069",
+        "icon_crest_070",
+        "icon_crest_071",
+        "icon_crest_072",
+        "icon_crest_073",
+        "icon_crest_074",
+        "icon_crest_075",
+        "icon_crest_076",
+        "icon_crest_077",
+        "icon_crest_078",
+        "icon_crest_079",
+        "icon_crest_080",
+        "icon_crest_081",
+        "icon_crest_082",
+        "icon_crest_083",
+        "icon_crest_084",
+        "icon_crest_085",
+        "icon_crest_086",
+        "icon_crest_087",
+        "icon_crest_088",
+        "icon_crest_089",
+        "icon_crest_090",
+        "icon_crest_091",
+        "icon_crest_092",
+        "icon_crest_093",
+        "icon_crest_094",
+        "icon_crest_095",
+        "icon_crest_096_twitch",
+        "icon_crest_097_twitch",
+        "icon_crest_098_twitch",
+        "icon_crest_099_premium",
+        "icon_crest_1",
+        "icon_crest_10",
+        "icon_crest_100_premium",
+        "icon_crest_101_premium",
+        "icon_crest_102_twitch",
+        "icon_crest_103_twitch",
+        "icon_crest_104_twitch",
+        "icon_crest_105",
+        "icon_crest_106",
+        "icon_crest_107",
+        "icon_crest_108",
+        "icon_crest_109",
+        "icon_crest_11",
+        "icon_crest_110",
+        "icon_crest_111",
+        "icon_crest_112",
+        "icon_crest_113",
+        "icon_crest_114",
+        "icon_crest_115",
+        "icon_crest_116",
+        "icon_crest_117",
+        "icon_crest_118",
+        "icon_crest_119",
+        "icon_crest_12",
+        "icon_crest_120",
+        "icon_crest_121",
+        "icon_crest_122",
+        "icon_crest_123",
+        "icon_crest_124",
+        "icon_crest_125",
+        "icon_crest_126",
+        "icon_crest_127",
+        "icon_crest_128",
+        "icon_crest_129",
+        "icon_crest_13",
+        "icon_crest_130",
+        "icon_crest_131",
+        "icon_crest_132",
+        "icon_crest_133",
+        "icon_crest_134",
+        "icon_crest_135",
+        "icon_crest_136",
+        "icon_crest_137",
+        "icon_crest_138",
+        "icon_crest_139",
+        "icon_crest_14",
+        "icon_crest_140",
+        "icon_crest_141",
+        "icon_crest_142",
+        "icon_crest_143",
+        "icon_crest_144",
+        "icon_crest_145",
+        "icon_crest_146",
+        "icon_crest_147",
+        "icon_crest_148",
+        "icon_crest_149",
+        "icon_crest_15",
+        "icon_crest_150",
+        "icon_crest_151",
+        "icon_crest_152",
+        "icon_crest_153",
+        "icon_crest_154",
+        "icon_crest_155",
+        "icon_crest_156",
+        "icon_crest_157",
+        "icon_crest_158",
+        "icon_crest_159",
+        "icon_crest_16",
+        "icon_crest_160",
+        "icon_crest_161",
+        "icon_crest_162",
+        "icon_crest_163",
+        "icon_crest_164",
+        "icon_crest_165",
+        "icon_crest_166",
+        "icon_crest_167",
+        "icon_crest_168",
+        "icon_crest_169",
+        "icon_crest_17",
+        "icon_crest_170",
+        "icon_crest_171",
+        "icon_crest_172",
+        "icon_crest_173",
+        "icon_crest_174",
+        "icon_crest_175",
+        "icon_crest_176",
+        "icon_crest_177",
+        "icon_crest_178",
+        "icon_crest_179",
+        "icon_crest_18",
+        "icon_crest_180",
+        "icon_crest_181",
+        "icon_crest_182",
+        "icon_crest_183",
+        "icon_crest_184",
+        "icon_crest_185",
+        "icon_crest_186",
+        "icon_crest_187",
+        "icon_crest_188",
+        "icon_crest_189",
+        "icon_crest_19",
+        "icon_crest_190",
+        "icon_crest_191",
+        "icon_crest_192",
+        "icon_crest_193",
+        "icon_crest_194",
+        "icon_crest_195",
+        "icon_crest_196",
+        "icon_crest_197",
+        "icon_crest_198",
+        "icon_crest_199",
+        "icon_crest_2",
+        "icon_crest_20",
+        "icon_crest_200",
+        "icon_crest_201",
+        "icon_crest_202",
+        "icon_crest_203",
+        "icon_crest_204",
+        "icon_crest_205",
+        "icon_crest_206",
+        "icon_crest_207",
+        "icon_crest_208",
+        "icon_crest_21",
+        "icon_crest_22",
+        "icon_crest_23",
+        "icon_crest_24",
+        "icon_crest_25",
+        "icon_crest_26",
+        "icon_crest_27",
+        "icon_crest_28",
+        "icon_crest_29",
+        "icon_crest_3",
+        "icon_crest_30",
+        "icon_crest_31",
+        "icon_crest_32",
+        "icon_crest_33",
+        "icon_crest_34",
+        "icon_crest_35",
+        "icon_crest_36",
+        "icon_crest_37",
+        "icon_crest_38",
+        "icon_crest_39",
+        "icon_crest_4",
+        "icon_crest_40",
+        "icon_crest_41",
+        "icon_crest_42",
+        "icon_crest_43",
+        "icon_crest_44",
+        "icon_crest_45",
+        "icon_crest_46",
+        "icon_crest_47",
+        "icon_crest_48",
+        "icon_crest_49",
+        "icon_crest_5",
+        "icon_crest_50",
+        "icon_crest_6",
+        "icon_crest_7",
+        "icon_crest_8",
+        "icon_crest_9"
+    ];
+    
+    const backgroundImagePaths = [
+        "icon_shield_shape1v1",
+        "icon_shield_shape1v2",
+        "icon_shield_shape1v3",
+        "icon_shield_shape1v4",
+        "icon_shield_shape1v5",
+        "icon_shield_shape1v6",
+        "icon_shield_shape2v1",
+        "icon_shield_shape2v2",
+        "icon_shield_shape2v3",
+        "icon_shield_shape2v4",
+        "icon_shield_shape2v5",
+        "icon_shield_shape2v6",
+        "icon_shield_shape3v1",
+        "icon_shield_shape3v2",
+        "icon_shield_shape3v3",
+        "icon_shield_shape3v4",
+        "icon_shield_shape3v5",
+        "icon_shield_shape3v6",
+        "icon_shield_shape4v1",
+        "icon_shield_shape4v2",
+        "icon_shield_shape4v3",
+        "icon_shield_shape4v4",
+        "icon_shield_shape4v5",
+        "icon_shield_shape4v6"
+    ];
 
     const foregroundColorsContainer = document.getElementById('foreground-colors-container');
     const backgroundColorsContainer = document.getElementById('background-colors-container');
 
-    let currentForegroundColor, currentBackgroundColor, currentForegroundImage, currentBackgroundImage,
-        currentForegroundSmallImage, currentBackgroundSmallImage;
+    let currentForegroundColor, currentBackgroundColor, currentForegroundImage, currentBackgroundImage;
 
     function randomizeCrest() {
         const randomForegroundColor = Object.values(foregroundColors)[Math.floor(Math.random() * Object.values(foregroundColors).length)];
         const randomBackgroundColor = Object.values(backgroundColors)[Math.floor(Math.random() * Object.values(backgroundColors).length)];
-        const randomForegroundImage = smallForegroundImagePaths[Math.floor(Math.random() * smallForegroundImagePaths.length)];//imagePathToUrl(largeForegroundImagePaths[Math.floor(Math.random() * largeForegroundImagePaths.length)]);
-        const randomBackgroundImage = smallBackgroundImagePaths[Math.floor(Math.random() * smallBackgroundImagePaths.length)];//imagePathToUrl(largeBackgroundImagePaths[Math.floor(Math.random() * largeBackgroundImagePaths.length)]);
+        const randomForegroundImage = foregroundImagePaths[Math.floor(Math.random() * foregroundImagePaths.length)];
+        const randomBackgroundImage = backgroundImagePaths[Math.floor(Math.random() * backgroundImagePaths.length)];
 
         selectColorTile('foreground', getColorTileForColor('foreground', randomForegroundColor), randomForegroundColor);
         selectColorTile('background', getColorTileForColor('background', randomBackgroundColor), randomBackgroundColor);
+
         selectImageTile('foreground', getImageTileForImage('foreground', randomForegroundImage), randomForegroundImage);
         selectImageTile('background', getImageTileForImage('background', randomBackgroundImage), randomBackgroundImage);
     }
 
-    const smallForegroundImageElements = smallForegroundImagePaths.map(smallForegroundImagePath => {
+    const smallForegroundImageElements = foregroundImagePaths.map(name => {
         const image = document.createElement('img');
-        const url = imagePathToUrl(smallForegroundImagePath);
+        const url = `/images/foreground/small/${name}_small.png`;
         image.src = url;
+        image.width = 72;
+        image.height = 72;
         image.draggable = false;
         image.classList.add('foreground');
         image.classList.add('selectable');
-        image.onerror = () => image.src = url;
+        image.setAttribute('data-name', name);
         image.onclick = () => {
-            selectImageTile('foreground', image, smallForegroundImagePath);
+            selectImageTile('foreground', image, name);
             renderForeground();
         }
         return image;
     });
     foregroundImagesContainer.append(...smallForegroundImageElements);
 
-    const smallBackgroundImageElements = smallBackgroundImagePaths.map(smallBackgroundImagePath => {
+    const smallBackgroundImageElements = backgroundImagePaths.map(name => {
         const image = document.createElement('img');
-        const url = imagePathToUrl(smallBackgroundImagePath);
+        const url = `/images/background/small/${name}_small.png`;
         image.src = url;
+        image.width = 72;
+        image.height = 72;
         image.draggable = false;
         image.classList.add('background');
         image.classList.add('selectable');
-        image.onerror = () => image.src = url;
+        image.setAttribute('data-name', name);
         image.onclick = () => {
-            selectImageTile('background', image, smallBackgroundImagePath);
+            selectImageTile('background', image, name);
             renderBackground();
         }
         return image;
     });
     backgroundImagesContainer.append(...smallBackgroundImageElements);
 
-    function selectImageTile(which, image, smallImagePath) {
+    function selectImageTile(which, image, name) {
         [...document.getElementsByClassName(`${which} selectable`)].forEach(selectableElement => selectableElement.classList.remove('selected'));
         image.classList.add('selected');
         switch (which) {
             case 'foreground':
-                currentForegroundImage = getCorrespondingLargeImagePath(largeForegroundImagePaths, smallImagePath);
-                currentForegroundSmallImage = smallImagePath;
+                currentForegroundImage = name;
                 break;
             case 'background':
-                currentBackgroundImage = getCorrespondingLargeImagePath(largeBackgroundImagePaths, smallImagePath);
-                currentBackgroundSmallImage = smallImagePath;
+                currentBackgroundImage = name;
                 break;
         }
     }
@@ -904,15 +663,13 @@
 
             ctxBackground.putImageData(imageData, 0, 0);
         };
-        image.src = currentBackgroundImage;
-        image.crossOrigin = 'Anonymous';
+        image.src = `/images/background/large/${currentBackgroundImage}.png`;
     }
 
     function renderForeground() {
         const color = parseInt(currentForegroundColor.slice(1), 16);
 
         const image = new Image();
-        image.crossOrigin = 'Anonymous';
 
         image.onload = () => {
             canvasForeground.width = image.width;
@@ -939,11 +696,11 @@
 
             ctxForeground.putImageData(imageData, 0, 0);
         };
-        image.src = currentForegroundImage;
+        image.src = `/images/foreground/large/${currentForegroundImage}.png`;
     }
 
     function getImageTileForImage(which, image) {
-        return [...document.getElementsByClassName(`${which} selectable`)].find(tile => tile.src.slice(17, -4) === image);
+        return [...document.getElementsByClassName(`${which} selectable`)].find(tile => tile.getAttribute('data-name') === image);
     }
 
     function getColorTileForColor(which, color) {
@@ -1005,7 +762,7 @@
     document.getElementById('url-button').onclick = async () => {
         const result = await navigator.permissions.query({name: 'clipboard-write'});
         if (result.state === 'granted' || result.state === 'prompt') {
-            await navigator.clipboard.writeText(`${window.location.href.replace(window.location.search, '')}?fgcolor=${encodeURIComponent(currentForegroundColor)}&bgcolor=${encodeURIComponent(currentBackgroundColor)}&fgimage=${encodeURIComponent(currentForegroundSmallImage)}&bgimage=${encodeURIComponent(currentBackgroundSmallImage)}`);
+            await navigator.clipboard.writeText(`${window.location.href.replace(window.location.search, '')}?fgcolor=${encodeURIComponent(currentForegroundColor)}&bgcolor=${encodeURIComponent(currentBackgroundColor)}&fgimage=${encodeURIComponent(currentForegroundImage)}&bgimage=${encodeURIComponent(currentBackgroundImage)}`);
             copyPopup.style.display = 'block';
             setTimeout(() => {
                 copyPopup.style.display = 'none';
